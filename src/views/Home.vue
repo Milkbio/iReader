@@ -6,8 +6,8 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
   import Epub from 'epubjs'
-  const DOWNLOAD_URL = '/static/2013_Book_FungalDiseaseInBritainAndTheUn.epub'
 
   export default {
     name: 'home',
@@ -19,13 +19,16 @@
         locations: null
       }
     },
+    computed: {
+      ...mapGetters(['test'])
+    },
     components: {
     },
     methods: {
       // 电子书的解析渲染
       showEpub() {
         // 生成ebook
-        this.book = new Epub(DOWNLOAD_URL)
+        this.book = new Epub()
         // console.log(this.book)
         this.rendition = this.book.renderTo('read', {
           width: window.innerWidth,
