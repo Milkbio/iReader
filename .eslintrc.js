@@ -13,7 +13,9 @@ module.exports = {
     'indent': 'off',
     "generator-star-spacing": 0,
     "space-before-function-paren": [0, "always"],
-    "object-curly-spacing": 0
+    "object-curly-spacing": 0,
+    "no-trailing-spaces": 0,
+    "spaced-comment": 0
   },
   parserOptions: {
     parser: 'babel-eslint'
