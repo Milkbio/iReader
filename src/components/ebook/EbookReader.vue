@@ -8,11 +8,12 @@
   import Epub from 'epubjs'
   import {ebookMixin} from '@/utils/mixin'
   import {FONT_URL_LIST} from '@/utils/enums'
+  import * as Storage from '@/utils/storage'
 
   global.ePub = Epub
 
   export default {
-    name: 'ebookReader',
+    name: 'EbookReader',
     data() {
       return {
         book: null,
@@ -26,10 +27,6 @@
       }
     },
     mixins: [ebookMixin],
-    components: {
-    },
-    computed: {
-    },
     methods: {
       // 电子书的解析渲染
       initEpub() {
@@ -43,8 +40,16 @@
           height: window.innerHeight,
           method: 'default'
         })
-        // 通过Rendition.display渲染电子书
-        this.rendition.display()
+        // 通过Rendition.display渲染电子书，同时保存该电子书
+        this.rendition.display().then(() => {
+          let font = Storage.getFontFamily(this.filename)
+          if (!font) {
+            Storage.saveFontFamily(this.filename, this.defaultFontFamily)
+          } else {
+            this.rendition.themes.font(font)
+            this.setDefaultFontFamily(font)
+          }
+        })
         this.rendition.on('touchstart', (e) => {
           this.touchStartX = e.changedTouches[0].clientX
           this.touchStartTime = e.timeStamp

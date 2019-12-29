@@ -18,6 +18,8 @@
 <script>
   import {ebookMixin} from '@/utils/mixin'
   import {FONT_FAMILY_LIST} from '@/utils/enums'
+  import * as Storage from '@/utils/storage'
+
   export default {
     name: 'EbookSetFontFamily',
     data() {
@@ -39,6 +41,7 @@
       // 点击list项目设置reader字体
       setFontFamily(font) {
         this.setDefaultFontFamily(font)
+        Storage.saveFontFamily(this.filename, font)
         if (font === 'Default') {
           this.currentBook.rendition.themes.font('Times New Roman')
         } else {
@@ -47,7 +50,6 @@
       }
     },
     mounted() {
-
     }
   }
 </script>
