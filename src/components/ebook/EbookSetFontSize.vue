@@ -1,7 +1,7 @@
 <template>
   <transition name="slide-up">
-    <div class="setting-wrapper" v-show="menuVisible && settingVisible === 2">
-      <section class="setting-font-size">
+    <section class="setting-wrapper" v-show="menuVisible && settingVisible === 2">
+      <div class="setting-font-size">
         <div class="preview" :style="{fontSize: fontSizeList[0].fontSize + 'px'}">A</div>
         <div class="select-wrapper"
              v-for="(item, index) in fontSizeList"
@@ -15,8 +15,13 @@
           <div class="line"></div>
         </div>
         <div class="preview" :style="{fontSize: fontSizeList[fontSizeList.length - 1].fontSize + 'px'}">A</div>
-      </section>
-    </div>
+      </div>
+      <div class="setting-font-family" @click="showFontFamilyPopup">
+        <div class="family-text-wrapper">
+          <span>{{defaultFontFamily}}</span><span class="icon-forward"></span>
+        </div>
+      </div>
+    </section>
   </transition>
 </template>
 
@@ -39,6 +44,10 @@
       setFontSize(size) {
         this.setDefaultFontSize(size)
         this.currentBook.rendition.themes.fontSize(size + 'px')
+      },
+      // 点击弹出字体弹出层
+      showFontFamilyPopup() {
+        this.setFontFamilyVisible(true)
       }
     },
     mounted() {
@@ -49,7 +58,7 @@
 <style scoped lang="scss">
   .setting-font-size {
     display: flex;
-    height: 100%;
+    height: 60px;
     .preview {
       flex: 0 0 40px;
       @include center;
@@ -97,6 +106,18 @@
             border-radius: 100%;
           }
         }
+      }
+    }
+  }
+  .setting-font-family {
+    height: 30px;
+    color: #999;
+    font-size: 14px;
+    .family-text-wrapper {
+      height: 100%;
+      @include center;
+      &:active {
+        color: #333;
       }
     }
   }

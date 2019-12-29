@@ -1,8 +1,10 @@
 const state = {
   filename: '',
   menuVisible: true,
-  settingVisible: -1, // -1不显示，0进度， 1主题，2字号
+  settingVisible: 2, // -1不显示，0进度， 1主题，2字号
+  fontFamilyVisible: true,
   defaultFontSize: 16,
+  defaultFontFamily: 'Default',
   currentBook: null
 }
 

@@ -110,7 +110,10 @@
       // 点击中间切换上下工具栏显示隐藏
       toggleShowTools() {
         this.setMenuVisible(!this.menuVisible)
-        if (!this.menuVisible) this.setSettingVisible(-1)
+        if (!this.menuVisible) {
+          this.setSettingVisible(-1)
+          this.setFontFamilyVisible(false)
+        }
       },
       // 隐藏上下工具栏
       // 点击目录icon隐藏上下工具栏，显示目录
@@ -119,6 +122,7 @@
       handleHideTools() {
         this.setMenuVisible(false)
         this.setSettingVisible(-1)
+        this.setFontFamilyVisible(false)
       },
       // 显示目录
       handleShowCatalogue() {

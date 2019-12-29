@@ -9,14 +9,16 @@
         <div class="icon-wrapper" @click="handleShowSetting(1)"><span class="icon-bright"></span></div>
         <div class="icon-wrapper" @click="handleShowSetting(2)"><span class="icon-A"></span></div>
       </div>
-      <ebook-set-font/>
+      <ebook-set-font-size/>
+      <ebook-set-font-family/>
     </section>
   </transition>
 </template>
 
 <script>
   import {ebookMixin} from '@/utils/mixin'
-  import EbookSetFont from './EbookSetFont'
+  import EbookSetFontSize from './EbookSetFontSize'
+  import EbookSetFontFamily from './EbookSetFontFamily'
 
   export default {
     name: 'EbookMenu',
@@ -26,7 +28,8 @@
       bookAvailable: Boolean
     },
     components: {
-      EbookSetFont
+      EbookSetFontSize,
+      EbookSetFontFamily
     },
     mixins: [ebookMixin],
     data() {
