@@ -10,6 +10,9 @@ module.exports = {
             propList: ['*']
           })
         ]
+      },
+      sass: {
+        prependData: `@import "@/assets/css/global.scss";`
       }
     }
   }

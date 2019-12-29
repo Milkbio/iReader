@@ -15,7 +15,7 @@ const routes = [
     children: [
       {
         path: ':filename',
-        component: () => import(/* webpackChunkName 'ebook' */ '@/components/ebook/ebookReader')
+        component: () => import(/* webpackChunkName 'ebook' */ '@/components/ebook/EbookReader')
       }
     ]
   }
