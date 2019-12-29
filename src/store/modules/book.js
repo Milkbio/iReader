@@ -1,6 +1,9 @@
 const state = {
   filename: '',
-  menuVisible: true
+  menuVisible: true,
+  settingVisible: -1, // -1不显示，0进度， 1主题，2字号
+  defaultFontSize: 16,
+  currentBook: null
 }
 
 const getters = {}
