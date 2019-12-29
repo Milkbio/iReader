@@ -7,6 +7,7 @@
 <script>
   import Epub from 'epubjs'
   import {ebookMixin} from '@/utils/mixin'
+  import {FONT_URL_LIST} from '@/utils/enums'
 
   global.ePub = Epub
 
@@ -62,6 +63,12 @@
           e.stopPropagation()
         })
 
+        // 注册方法修改iframe里面的font-family
+        this.rendition.hooks.content.register(contents => {
+          FONT_URL_LIST.forEach(url => {
+            contents.addStylesheet(url)
+          })
+        })
         // 获取theme对象
         /*this.themes = this.rendition.themes
         this.setFontSize(16)

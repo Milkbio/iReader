@@ -39,7 +39,11 @@
       // 点击list项目设置reader字体
       setFontFamily(font) {
         this.setDefaultFontFamily(font)
-        this.currentBook.rendition.themes.font(font)
+        if (font === 'Default') {
+          this.currentBook.rendition.themes.font('Times New Roman')
+        } else {
+          this.currentBook.rendition.themes.font(font)
+        }
       }
     },
     mounted() {
