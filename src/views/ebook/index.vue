@@ -1,17 +1,23 @@
 <template>
   <section class="ebook">
-    <ebook-title :isShow="isShowTools"/>
+    <ebook-title/>
     <ebook-reader/>
+    <ebook-menu/>
   </section>
 </template>
 
 <script>
   import EbookReader from '@/components/ebook/EbookReader'
   import EbookTitle from '@/components/ebook/EbookTitle'
+  import EbookMenu from '@/components/ebook/EbookMenu'
 
   export default {
     name: 'Index',
-    components: {EbookReader, EbookTitle},
+    components: {
+      EbookReader,
+      EbookTitle,
+      EbookMenu
+    },
     data() {
       return {
         isShowTools: false,
@@ -26,7 +32,6 @@
 
     },
     mounted() {
-      console.log(this.$store)
     }
   }
 </script>
