@@ -31,7 +31,7 @@
       // 电子书的解析渲染
       initEpub() {
         // 生成ebook
-        const url = `http://192.168.1.103:9000/resource/epub/${this.filename}.epub`
+        const url = `http://192.168.1.102:8080/resource/epub/${this.filename}.epub`
         this.book = new Epub(url)
         this.setCurrentBook(this.book)
         // 生成Rendition
